@@ -1,0 +1,12 @@
+Cameras:
+    1100 South: 7015
+    Mantua Exit: 7622             
+    Sardine Summit: 7013
+    Dry Lake North Side: 7623
+    Sherwood Bend: 7624
+    MP 14.31: 7625
+    MP 15.17: 7626
+    Wellsville: 7014
+
+https://www.udottraffic.utah.gov/map/Cctv/7015
+    
