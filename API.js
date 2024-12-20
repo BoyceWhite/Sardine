@@ -125,7 +125,7 @@ function putConds(response) {
 function putSigns(response) {
     const signContainer = document.getElementById('signGallary');
     const signList = [
-        ["1100 S. Brigham", "ADX--72079"],
+        ["1100 S Brigham", "ADX--72079"],
         ["Wellsville", "ADX--72083"],
     ]
 
