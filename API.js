@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log('Document Loaded')
-    const apiKey = "adfd9872174d49f7b34b9a5f64b818af";
-    const url = `https://cors-anywhere.herokuapp.com/https://www.udottraffic.utah.gov/api/v2/get/messagesigns?key=${apiKey}&format=json`;
+    const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
-    testing()
+    // testing()
 
     fetch(url)
         .then(response => {
@@ -126,4 +125,18 @@ function modals() {
 
 function testing() {
     console.log('BEGINNING TEST')
+
+    const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => console.error("Error fetching data:", error));
 }
