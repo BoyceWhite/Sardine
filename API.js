@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            
-            putSigns(data[0])
+            putSigns(data.signs);
+            putTemps(data.temps);
+            putConds(data.conds);
         })
         .catch(error => console.error("Error fetching data:", error));
 
@@ -49,6 +50,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modals()
 });
+
+function putTemps(response) {
+    const sardineTemp = document.getElementById('SardineValue');
+    const loganTemp = document.getElementById('LoganValue');
+
+    sardine = response.find(item => item.Id === 50555);
+    logan = response.find(item => item.Id === 50465);
+
+
+    if (sardine) {
+        sardineTemp.innerHTML = `${sardine.SurfaceTemp}°F`;
+    } else {
+        sardineTemp.innerHTML = 'N/A';
+    }
+
+    if (logan) {
+        loganTemp.innerHTML = `${logan.SurfaceTemp}°F`;
+    } else {
+        loganTemp.innerHTML = 'N/A';
+    }
+}
+
+function putConds(response) {
+    const road1Dry = document.getElementById('road1Val');
+    const road2Dry = document.getElementById('road2Val');
+    const road1Weather = document.getElementById('road1Weather');
+    const road2Weather = document.getElementById('road2Weather');
+
+    road1Cond = response.find(item => item.Id === 239);
+    road2Cond = response.find(item => item.Id === 213);
+
+    if (sardine) {
+        road1Dry.innerHTML = road1Cond.RoadCondition;
+        road1Weather.innerHTML = road1Cond.WeatherCondition;
+    } else {
+        road1Dry.innerHTML = 'N/A';
+    }
+
+    if (logan) {
+        road2Dry.innerHTML = road2Cond.RoadCondition;
+        road2Weather.innerHTML = road2Cond.WeatherCondition;
+    } else {
+        road2Dry.innerHTML = 'N/A';
+    }
+}
+
 
 function putSigns(response) {
     const signContainer = document.getElementById('signGallary');
@@ -94,9 +141,7 @@ function modals() {
     const modalImg = document.getElementById("modalImage");
     const captionDiv = document.getElementById("caption");
 
-    const div1 = document.getElementById("cameraGallary");
-    const div2 = document.getElementById("signGallary");
-    const div3 = document.getElementById("header");
+    toBlur = ["cameraGallary", "signGallary", "header", "temperatureContainer", "roadConditions"]
 
     const figures = document.querySelectorAll("#cameraGallary figure");
 
@@ -109,34 +154,16 @@ function modals() {
             modalImg.src = img.src;
             captionDiv.textContent = caption;
 
-            div1.classList.add("blurred");
-            div2.classList.add("blurred");
-            div3.classList.add("blurred");
+            toBlur.forEach(id => document.getElementById(id).classList.add("blurred"));
         });
     });
 
     modal.addEventListener("click", () => {
         modal.style.display = "none";
-        div1.classList.remove("blurred");
-        div2.classList.remove("blurred");
-        div3.classList.remove("blurred");
+        toBlur.forEach(id => document.getElementById(id).classList.remove("blurred"));
     });
 };
 
 function testing() {
     console.log('BEGINNING TEST')
-
-    const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => console.error("Error fetching data:", error));
 }

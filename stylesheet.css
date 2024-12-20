@@ -17,17 +17,10 @@ h1 {
     top: 0;
     background-color: rgba(249, 249, 249, 1);
     width: 100%;
-    font-size: 2rem;
-    padding: 0;
+    font-size: 8vw;
     margin: 0;
     text-align: center;
     z-index: 1000;
-}
-
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
 }
 
 #cameraGallary {
@@ -75,12 +68,6 @@ html, body {
 .image-container figcaption {
     margin-top: 5px;
     font-weight: bold;
-}
-
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 20px;
 }
 
 .sign-container {
