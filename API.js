@@ -94,6 +94,31 @@ function putConds(response) {
     } else {
         road2Dry.innerHTML = 'N/A';
     }
+
+    moderate = 'Moderate'
+    bad = 'Bad'
+    wet = 'Wet'
+
+    if (road1Cond.WeatherCondition == moderate){
+        road1Weather.classList.add('moderate')
+    }
+    if(road1Cond.WeatherCondition == bad){
+        road1Weather.classList.add('bad')
+    }
+    if (road1Cond.RoadCondition == wet){
+        road1Dry.classList.add('wet')
+    }
+
+    if (road2Cond.WeatherCondition == moderate){
+        road2Weather.classList.add('moderate')
+    }
+    if(road2Cond.WeatherCondition == bad){
+        road2Weather.classList.add('bad')
+    }
+    if (road2Cond.RoadCondition == wet){
+        road2Dry.classList.add('wet')
+    }
+
 }
 
 
