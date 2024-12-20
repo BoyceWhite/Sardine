@@ -44,12 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         cameraGallary.appendChild(figureElement);
     }
+
+    modals()
 });
 
 function putData(response) {
     const signContainer = document.getElementById('signGallary');
     const signList = [
-        ["1100 SOUTH", "ADX--72079"],
+        ["1100 S. Brigham", "ADX--72079"],
         ["Wellsville", "ADX--72083"],
     ]
 
@@ -85,4 +87,36 @@ function putData(response) {
     }
 }
 
+function modals() {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionDiv = document.getElementById("caption");
 
+    const div1 = document.getElementById("cameraGallary");
+    const div2 = document.getElementById("signGallary");
+    const div3 = document.getElementById("header");
+
+    const figures = document.querySelectorAll("#cameraGallary figure");
+
+    figures.forEach(figure => {
+        figure.addEventListener("click", () => {
+            const img = figure.querySelector("img");
+            const caption = figure.querySelector("figcaption").textContent;
+
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionDiv.textContent = caption;
+
+            div1.classList.add("blurred");
+            div2.classList.add("blurred");
+            div3.classList.add("blurred");
+        });
+    });
+
+    modal.addEventListener("click", () => {
+        modal.style.display = "none";
+        div1.classList.remove("blurred");
+        div2.classList.remove("blurred");
+        div3.classList.remove("blurred");
+    });
+};

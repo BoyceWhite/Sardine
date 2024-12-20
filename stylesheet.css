@@ -3,21 +3,25 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
     margin: 0;
     background-color: rgba(249, 249, 249, 1);
+}
+
+.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
 }
 
 h1 {
     position: sticky;
     top: 0;
-    background-color: rgba(0, 123, 255, 1);
+    background-color: rgba(249, 249, 249, 1);
     width: 100%;
     font-size: 2rem;
-    padding: 10px, 0;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow to separate from the content */
-    z-index: 1000; /* Ensures the title stays above other content */
+    z-index: 1000;
 }
 
 button {
@@ -65,6 +69,7 @@ html, body {
     width: 100%;
     height: auto; 
     object-fit: cover;
+    cursor: pointer;
 }
 
 .image-container figcaption {
@@ -131,3 +136,32 @@ h1 {
     100% { opacity: 0; }
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#caption {
+    margin: 15px auto;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    padding: 10px;
+    max-width: 80%;
+    border-radius: 5px;
+    position: relative;
+}
