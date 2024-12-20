@@ -9,4 +9,12 @@ Cameras:
     Wellsville: 7014
 
 https://www.udottraffic.utah.gov/map/Cctv/7015
+
+Road Conditions:
+Wellsville to Logan: 239
+Brigham to Wellsville: 213
+
+Temperatures:
+Sardine: 50555
+Logan: 50465
     

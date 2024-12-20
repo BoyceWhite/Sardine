@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             
-            putData(data)
+            putSigns(data[0])
         })
         .catch(error => console.error("Error fetching data:", error));
 
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modals()
 });
 
-function putData(response) {
+function putSigns(response) {
     const signContainer = document.getElementById('signGallary');
     const signList = [
         ["1100 S. Brigham", "ADX--72079"],
