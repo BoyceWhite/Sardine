@@ -96,7 +96,7 @@ h1 {
     border: 5px solid #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 30vw;
+    width: 25vw;
     height: 10vw;
     padding: 20px;
     display: flex;
@@ -107,7 +107,7 @@ h1 {
 
 
 .sign-caption {
-    font-size: 1.5rem;
+    font-size: 3vw;
     color: #fff;
     text-align: center;
     font-family: 'Arial', sans-serif;
@@ -115,11 +115,10 @@ h1 {
 }
 
 .sign-display {
-    font-size: 2rem;
+    font-size: 4vw;
     color: rgba(255, 255, 0);
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 2px;
     text-transform: uppercase;
     animation: blink 3s infinite step-start;
     display: flex;
@@ -158,7 +157,7 @@ h1 {
     margin: 15px auto;
     text-align: center;
     color: #fff;
-    font-size: 2rem;
+    font-size: 6vw;
     padding: 10px;
     max-width: 80%;
     border-radius: 5px;
