@@ -100,6 +100,7 @@ html, body {
     text-align: center;
     font-family: 'Arial', sans-serif;
     margin-bottom: 10px;
+    text-decoration: none;
 }
 
 .sign-display {
