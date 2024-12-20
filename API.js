@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log('Document Loaded')
     const apiKey = "adfd9872174d49f7b34b9a5f64b818af";
     const url = `https://cors-anywhere.herokuapp.com/https://www.udottraffic.utah.gov/api/v2/get/messagesigns?key=${apiKey}&format=json`;
 
