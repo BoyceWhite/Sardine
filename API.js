@@ -73,54 +73,37 @@ function putTemps(response) {
 }
 
 function putConds(response) {
-    const road1Dry = document.getElementById('road1Val');
-    const road2Dry = document.getElementById('road2Val');
-    const road1Weather = document.getElementById('road1Weather');
-    const road2Weather = document.getElementById('road2Weather');
+    const road1CondElem = document.getElementById('road1Val');
+    const road2CondElem = document.getElementById('road2Val');
+    const road1WeatherElem = document.getElementById('road1Weather');
+    const road2WeatherElem = document.getElementById('road2Weather');
 
-    road1Cond = response.find(item => item.Id === 239);
-    road2Cond = response.find(item => item.Id === 213);
+    const road1Cond = response.find(item => item.Id === 239) || {};
+    const road2Cond = response.find(item => item.Id === 213) || {};
 
-    if (sardine) {
-        road1Dry.innerHTML = road1Cond.RoadCondition;
-        road1Weather.innerHTML = road1Cond.WeatherCondition;
-    } else {
-        road1Dry.innerHTML = 'N/A';
-    }
+    const labels = [
+        [road1CondElem, capitalizeFirstLetter(road1Cond.RoadCondition) || 'N/A'],
+        [road2CondElem, capitalizeFirstLetter(road2Cond.RoadCondition) || 'N/A'],
+        [road1WeatherElem, capitalizeFirstLetter(road1Cond.WeatherCondition) || 'N/A'],
+        [road2WeatherElem, capitalizeFirstLetter(road2Cond.WeatherCondition) || 'N/A']
+    ];
 
-    if (logan) {
-        road2Dry.innerHTML = road2Cond.RoadCondition;
-        road2Weather.innerHTML = road2Cond.WeatherCondition;
-    } else {
-        road2Dry.innerHTML = 'N/A';
-    }
+    const conditions = [
+        ['wet', 'wet'],
+        ['mixed rain and snow', 'mixed'],
+        ['fair', 'fair']
+    ];
 
-    moderate = 'Moderate'
-    bad = 'Bad'
-    wet = 'Wet'
+    for (let i = 0; i < labels.length; i++) {
+        labels[i][0].innerHTML = labels[i][1];
 
-    if (road1Cond.WeatherCondition == moderate){
-        road1Weather.classList.add('moderate')
+        for (let j = 0; j < conditions.length; j++) {
+            if (conditions[j][0] === labels[i][1].toLowerCase()) {
+                labels[i][0].classList.add(conditions[j][1]);
+            }
+        }
     }
-    if(road1Cond.WeatherCondition == bad){
-        road1Weather.classList.add('bad')
-    }
-    if (road1Cond.RoadCondition == wet){
-        road1Dry.classList.add('wet')
-    }
-
-    if (road2Cond.WeatherCondition == moderate){
-        road2Weather.classList.add('moderate')
-    }
-    if(road2Cond.WeatherCondition == bad){
-        road2Weather.classList.add('bad')
-    }
-    if (road2Cond.RoadCondition == wet){
-        road2Dry.classList.add('wet')
-    }
-
 }
-
 
 function putSigns(response) {
     const signContainer = document.getElementById('signGallary');
@@ -191,4 +174,9 @@ function modals() {
 
 function testing() {
     console.log('BEGINNING TEST')
+}
+
+function capitalizeFirstLetter(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
