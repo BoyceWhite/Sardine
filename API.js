@@ -91,7 +91,8 @@ function putConds(response) {
     const conditions = [
         ['wet', 'wet'],
         ['mixed rain and snow', 'mixed'],
-        ['fair', 'fair']
+        ['fair', 'fair'],
+        ['slushy', 'slushy']
     ];
 
     for (let i = 0; i < labels.length; i++) {
