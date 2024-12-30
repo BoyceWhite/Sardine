@@ -192,19 +192,19 @@ html, body {
     margin-top: 5px;
 }
 
-.wet {
-    color: rgb(105, 111, 203)!important;
-}
-
-.mixed {
-    color: rgb(164, 166, 40)!important;
-}
-
 .fair {
-    color: rgb(105, 155, 105)!important;
+    color: rgb(105, 155, 105) !important;
 }
 
-.slushy {
-    color: rgba(164, 167, 164, 0.932)!important;
+.wet {
+    color: rgb(64, 120, 255) !important; 
+}
+
+.moderate {
+    color: rgb(200, 150, 50) !important;
+}
+
+.hazard {
+    color: rgb(141, 66, 49) !important;
 }
 

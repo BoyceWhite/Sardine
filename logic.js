@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('Document Loaded')
     const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
-    // testing()
-
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -89,10 +87,14 @@ function putConds(response) {
     ];
 
     const conditions = [
-        ['wet', 'wet'],
-        ['mixed rain and snow', 'mixed'],
         ['fair', 'fair'],
-        ['slushy', 'slushy']
+        ['wet', 'wet'],
+        ['rain', 'wet'],
+        ['mixed rain and snow', 'moderate'],
+        ['slushy', 'moderate'],
+        ['patchy snow', 'moderate'],
+        ['snow', 'moderate'],
+        ['snow covered', 'hazard']
     ];
 
     for (let i = 0; i < labels.length; i++) {
@@ -172,10 +174,6 @@ function modals() {
         toBlur.forEach(id => document.getElementById(id).classList.remove("blurred"));
     });
 };
-
-function testing() {
-    console.log('BEGINNING TEST')
-}
 
 function capitalizeFirstLetter(str) {
     if (!str) return '';
