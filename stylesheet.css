@@ -114,7 +114,6 @@ html, body {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
-    animation: blink 3s infinite step-start;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,6 +121,10 @@ html, body {
     height: 100%;
     pointer-events: none;
     text-decoration: none;
+}
+
+.blink {
+    animation: blink 3s infinite step-start;
 }
 
 @keyframes blink {
