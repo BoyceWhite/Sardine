@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('Document Loaded')
     const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
-    // testing()
-
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -23,30 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cameraGallary.innerHTML = '';
 
-    const cameraList = [
-        ["1100 SOUTH", 7015],
-        ["Mantua Exit", 7622],
-        ["Sardine Summit", 7013],
-        ["Dry Lake North", 7623],
-        ["Sherwood Bend", 7624],
-        ["Milepost 14.31", 7625],
-        ["Milepost 15.17", 7626],
-        ["Wellsville", 7014],
-    ]
+    fetch('camera_list.json')
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(cameraList => {
+            for (let i = 0; i < cameraList.length; i++) {
+            const imgElement = document.createElement('img');
+            const figureElement = document.createElement('figure');
+            const captionElement = document.createElement('figcaption');
 
-    for (let i = 0; i < cameraList.length; i++) {
-        const imgElement = document.createElement('img');
-        const figureElement = document.createElement('figure');
-        const captionElement = document.createElement('figcaption');
+            imgElement.src = imageLink + cameraList[i][1];
+            captionElement.textContent = cameraList[i][0];
 
-        imgElement.src = imageLink + cameraList[i][1]
-        captionElement.textContent = cameraList[i][0];
+            figureElement.appendChild(captionElement);
+            figureElement.appendChild(imgElement);
 
-        figureElement.appendChild(captionElement);
-        figureElement.appendChild(imgElement);
-        
-        cameraGallary.appendChild(figureElement);
-    }
+            cameraGallary.appendChild(figureElement);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching camera list:', error);
+        });
 
     modals()
 });
