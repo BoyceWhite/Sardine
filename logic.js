@@ -212,3 +212,13 @@ function capitalizeFirstLetter(str) {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
+
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+        document.getElementById('darkModeToggle').innerHTML = 'Light Mode';
+    } else {
+        document.getElementById('darkModeToggle').innerHTML = 'Dark Mode';
+    }
+});

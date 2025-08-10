@@ -1,10 +1,53 @@
+/* ===== Light mode variables ===== */
+:root {
+    --bg-color: rgba(249, 249, 249, 1);
+    --heading-bg-color: rgba(249, 249, 249, 1);
+    --text-color: #000;
+    --sign-bg: #1a1a1a;
+    --sign-border: #fff;
+    --sign-shadow: rgba(0, 0, 0, 0.5);
+    --sign-caption-color: #fff;
+    --sign-display-color: rgba(255, 255, 0);
+    --modal-bg: rgba(0, 0, 0, 0.8);
+    --caption-color: #fff;
+    --container-text: white;
+    --box-bg: #444;
+    --box-border: #fff;
+    --fair-color: rgb(105, 155, 105);
+    --wet-color: rgb(64, 120, 255);
+    --moderate-color: rgb(200, 150, 50);
+    --hazard-color: rgb(141, 66, 49);
+}
+
+/* ===== Dark mode overrides ===== */
+.dark-mode {
+    --bg-color: #121212;
+    --heading-bg-color: #121212;
+    --text-color: #eee;
+    --sign-bg: #222;
+    --sign-border: #888;
+    --sign-shadow: rgba(255, 255, 0, 0.6);
+    --sign-caption-color: #eee;
+    --sign-display-color: rgba(255, 255, 100);
+    --modal-bg: rgba(0, 0, 0, 0.95);
+    --caption-color: #eee;
+    --container-text: #eee;
+    --box-bg: #333;
+    --box-border: #888;
+    --fair-color: rgb(155, 255, 155);
+    --wet-color: rgb(100, 160, 255);
+    --moderate-color: rgb(255, 200, 80);
+    --hazard-color: rgb(255, 120, 100);
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 0;
-    background-color: rgba(249, 249, 249, 1);
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 .blurred {
@@ -15,7 +58,8 @@ body {
 h1 {
     position: sticky;
     top: 0;
-    background-color: rgba(249, 249, 249, 1);
+    background-color: var(--heading-bg-color);
+    color: var(--text-color);
     width: 100%;
     font-size: 8vw;
     margin: 0;
@@ -29,7 +73,7 @@ h1 {
     justify-content: center; 
     gap: 10px;
     margin-top: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 #output1, #output2 {
@@ -59,7 +103,7 @@ html, body {
     margin-block-end: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
-  }
+}
 
 .image-container img {
     width: 100%;
@@ -70,19 +114,11 @@ html, body {
     cursor: pointer;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    cursor: pointer;
-}
-
 .image-container figcaption {
     height: 3em;
     font-size: 3vw;
     font-weight: bold;
-
+    color: var(--text-color);
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -97,10 +133,10 @@ html, body {
 }
 
 .sign {
-    background-color: #1a1a1a;
-    border: 5px solid #fff;
+    background-color: var(--sign-bg);
+    border: 5px solid var(--sign-border);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px var(--sign-shadow);
     width: 25vw;
     height: 10vw;
     padding: 20px;
@@ -113,21 +149,18 @@ html, body {
     text-decoration: none;
 }
 
-
 .sign-caption {
     font-size: 2vw;
-    color: #fff;
+    color: var(--sign-caption-color);
     text-align: center;
     font-family: 'Arial', sans-serif;
     margin-bottom: 10px;
-    text-decoration: none;
     pointer-events: none;
-    text-decoration: none;
 }
 
 .sign-display {
     font-size: 2vw;
-    color: rgba(255, 255, 0);
+    color: var(--sign-display-color);
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
@@ -137,7 +170,6 @@ html, body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    text-decoration: none;
 }
 
 .blink {
@@ -159,7 +191,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--modal-bg);
 }
 
 .modal-content {
@@ -171,7 +203,7 @@ html, body {
 #caption {
     margin: 15px auto;
     text-align: center;
-    color: #fff;
+    color: var(--caption-color);
     font-size: 6vw;
     padding: 10px;
     max-width: 80%;
@@ -183,7 +215,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var(--container-text);
     font-family: Arial, sans-serif;
     font-size: 3vw;
     padding: 0;
@@ -191,22 +223,13 @@ html, body {
     max-width: 100%;
 }
 
-#temperatureContainer div {
-    margin: 5px;
-    padding: 5px 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background-color: #444;
-    text-align: center;
-    width: 35vw;
-}
-
+#temperatureContainer div,
 #roadConditions div {
     margin: 5px;
     padding: 5px 10px;
-    border: 2px solid #fff;
+    border: 2px solid var(--box-border);
     border-radius: 5px;
-    background-color: #444;
+    background-color: var(--box-bg);
     text-align: center;
     width: 35vw;
 }
@@ -214,23 +237,31 @@ html, body {
 #temperatureContainer span, #roadConditions span {
     display: block;
     font-size: 2.5vw;
-    color: rgb(105, 155, 105);
     margin-top: 5px;
 }
 
-.fair {
-    color: rgb(105, 155, 105) !important;
+.fair { color: var(--fair-color) !important; }
+.wet { color: var(--wet-color) !important; }
+.moderate { color: var(--moderate-color) !important; }
+.hazard { color: var(--hazard-color) !important; }
+
+
+/* Light mode (default) */
+body {
+    background-color: white;
+    color: black;
 }
 
-.wet {
-    color: rgb(64, 120, 255) !important; 
+/* Dark mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
 }
 
-.moderate {
-    color: rgb(200, 150, 50) !important;
-}
-
-.hazard {
-    color: rgb(141, 66, 49) !important;
+#darkModeToggle {
+    padding: 8px 16px;
+    margin: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
 
