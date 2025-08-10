@@ -1,5 +1,4 @@
 import requests
-import json
 
 url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
@@ -44,19 +43,9 @@ for loc in locations:
             break
     if camera_id:
         camera_list.append([loc, camera_id])
-    else:
-        camera_list.append([loc, None])  # or skip if you prefer
 
-# Write JSON file
-with open("camera_list.json", "w") as json_file:
-    json.dump(camera_list, json_file, indent=2)
-
-# Write JavaScript file exporting the array
-with open("camera_list.js", "w") as js_file:
-    js_file.write("const cameraList = ")
-    json.dump(camera_list, js_file, indent=2)
-    js_file.write(";\n\nexport default cameraList;\n")
-
-print("Files created: camera_list.json and camera_list.js")
-
-
+# Print JS array for copy-pasting into your JavaScript code
+print("const cameraList = [")
+for loc, cam_id in camera_list:
+    print(f'    ["{loc}", {cam_id}],')
+print("];")
