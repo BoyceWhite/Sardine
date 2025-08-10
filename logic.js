@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     
     for (let i = 0; i < cameraList.length; i++) {
+        
         const imgElement = document.createElement('img');
         const figureElement = document.createElement('figure');
         const captionElement = document.createElement('figcaption');
