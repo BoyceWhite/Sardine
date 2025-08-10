@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('Document Loaded')
     const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
-    darkModeToggle();
+    const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (userPrefersDark){
+        darkModeToggle();
+    }
 
     fetch(url)
         .then(response => {
