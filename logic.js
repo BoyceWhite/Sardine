@@ -63,9 +63,11 @@ function putTemps(response) {
     const sardineTemp = document.getElementById('SardineValue');
     const loganTemp = document.getElementById('LoganValue');
 
-    sardine = response.find(item => item.Id === 50555);
-    logan = response.find(item => item.Id === 50465);
+    sardine = response.find(item => item.Id === 1650064);
+    logan = response.find(item => item.Id === 1650234);
 
+    console.log(sardine);
+    console.log(logan);
 
     if (sardine) {
         sardineTemp.innerHTML = `${sardine.SurfaceTemp}°F`;
