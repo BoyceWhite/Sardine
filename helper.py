@@ -1,4 +1,5 @@
 import requests
+import pyperclip
 
 url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
@@ -32,20 +33,48 @@ locations = [
     "US-89 @ 1200 E, LGN"
 ]
 
+shortNames = [
+  "1100 S 775 W, Brigham City",
+  "1100 S Main St, Brigham City",
+  "100 S, Mantua",
+  "Sardine Summit, Bear River",
+  "MP 12.26, Cache Valley",
+  "MP 13.93, Wellsville",
+  "MP 15.17, Wellsville",
+  "950 S, Wellsville",
+  "Main St, Wellsville",
+  "MP 19.9, Wellsville",
+  "3200 S & 2000 W, Logan",
+  "1000 W (SR-252), Logan",
+  "1700 S & 600 W, Logan",
+  "100 S Main St, Logan",
+  "200 N Main St, Logan",
+  "400 N Main St, Logan",
+  "900 E, USU, Logan",
+  "1200 E, Logan"
+]
+
+
 camera_list = []
-for loc in locations:
-    loc_clean = loc.strip().lower()
+
+for long_name, short_name in zip(locations, shortNames):
+    long_clean = long_name.strip().lower()
     camera_id = None
     for cam in cameraData:
-        cam_loc = cam.get('Location', '').strip().lower()
-        if cam_loc == loc_clean:
+        if cam.get('Location', '').strip().lower() == long_clean:
             camera_id = cam.get('Id')
             break
     if camera_id:
-        camera_list.append([loc, camera_id])
+        camera_list.append([short_name, camera_id])
 
-# Print JS array for copy-pasting into your JavaScript code
-print("const cameraList = [")
-for loc, cam_id in camera_list:
-    print(f'    ["{loc}", {cam_id}],')
-print("];")
+# Build the JS array string
+js_array_lines = ["const cameraList = ["]
+for name, cam_id in camera_list:
+    js_array_lines.append(f'    ["{name}", {cam_id}],')
+js_array_lines.append("];")
+
+js_array_str = "\n".join(js_array_lines)
+
+pyperclip.copy(js_array_str)
+print(js_array_str)
+print('Copied to Clipboard')
