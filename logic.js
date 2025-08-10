@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     cameraGallary.innerHTML = '';
 
     const cameraList = [
-        ["1100 S 775 W, Brigham City", 61544],
-        ["1100 S Main St, Brigham City", 65661],
+        ["1100 S 775 W, Brigham", 61544],
+        ["1100 S Main St, Brigham", 65661],
         ["100 S, Mantua", 61189],
         ["Sardine Summit, Bear River", 65080],
         ["MP 12.26, Cache Valley", 65440],
