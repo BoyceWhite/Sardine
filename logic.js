@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('Document Loaded')
     const url = "https://yl3hltj9mf.execute-api.us-east-2.amazonaws.com/dev/SardineAPIHandler"
 
+    darkModeToggle();
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -215,6 +217,10 @@ function capitalizeFirstLetter(str) {
 }
 
 document.getElementById('darkModeToggle').addEventListener('click', function() {
+    darkModeToggle();
+});
+
+function darkModeToggle() {
     document.body.classList.toggle('dark-mode');
 
     if (document.body.classList.contains('dark-mode')) {
@@ -222,4 +228,4 @@ document.getElementById('darkModeToggle').addEventListener('click', function() {
     } else {
         document.getElementById('darkModeToggle').innerHTML = 'Dark Mode';
     }
-});
+}
