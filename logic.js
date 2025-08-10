@@ -88,10 +88,14 @@ function putConds(response) {
     ];
 
     const conditions = [
-        ['wet', 'wet'],
-        ['mixed rain and snow', 'mixed'],
         ['fair', 'fair'],
-        ['slushy', 'slushy']
+        ['wet', 'wet'],
+        ['rain', 'wet'],
+        ['mixed rain and snow', 'moderate'],
+        ['slushy', 'moderate'],
+        ['patchy snow', 'moderate'],
+        ['snow', 'moderate'],
+        ['snow covered', 'hazard']
     ];
 
     for (let i = 0; i < labels.length; i++) {
@@ -124,15 +128,35 @@ function putSigns(response) {
         captionElement.textContent = signList[i][0];
 
         data = response.find(item => item.Id === signList[i][1]);
-
+        messages = data.Messages
+        
         if(data) {
-            message = data.Messages[0]
+            if (messages.length > 1){
+                let messageIndex = 0;
+
+                signText.textContent = messages[messageIndex];
+
+                setInterval(() => {
+                    signText.style.opacity = '0';
             
-            if (message == 'NO_MESSAGE'){
-                signText.textContent = "NO MESSAGE"
-            } else {
-                signText.textContent = message
-            }
+                    setTimeout(() => {
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        signText.textContent = messages[messageIndex];
+            
+                        signText.style.opacity = '1';
+                    }, 500);
+                }, 3000);
+            
+            } else{           
+                 message = messages[0]
+                 signText.classList.add('blink')
+                 
+                if (message == 'NO_MESSAGE'){
+                    signText.textContent = "NO MESSAGE"
+                } else {
+                    signText.textContent = message
+                }
+    }
 
         }else {
             signText.textContent = "ERROR"
@@ -171,10 +195,6 @@ function modals() {
         toBlur.forEach(id => document.getElementById(id).classList.remove("blurred"));
     });
 };
-
-function testing() {
-    console.log('BEGINNING TEST')
-}
 
 function capitalizeFirstLetter(str) {
     if (!str) return '';
