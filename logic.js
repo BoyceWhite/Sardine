@@ -101,6 +101,7 @@ function putConds(response) {
 
     const conditions = [
         ['fair', 'fair'],
+        ['dry', 'fair'],
         ['wet', 'wet'],
         ['rain', 'wet'],
         ['mixed rain and snow', 'moderate'],
