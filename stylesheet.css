@@ -53,19 +53,21 @@ html, body {
 }
 
 .image-container figure {
-    text-align: center;
-    margin-bottom: 10px;
-    flex-basis: 40%; 
+    flex-basis: 40%;
     max-width: 40%;
-    aspect-ratio: 16 / 9;
-}
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-.image-container img {
+  .image-container img {
     width: 100%;
-    height: auto; 
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    display: block;
     cursor: pointer;
-}
+  }
 
 .image-container img {
     width: 100%;
