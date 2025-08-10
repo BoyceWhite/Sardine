@@ -54,7 +54,7 @@ html, body {
 
 .image-container figure {
     text-align: center;
-    margin: 0;
+    margin-bottom: 10px;
     flex-basis: 40%; 
     max-width: 40%;
     aspect-ratio: 16 / 9;
